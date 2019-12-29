@@ -1,3 +1,23 @@
+<h1>GIT CLONE INSTRUCTIONS</h1>
+<ol>
+    <li>run composer update</li>
+    <li>Inside storage folder, make sure you have the following folder structure:</li>
+        <ol>
+            <li>app</li>
+            <li>framework</li>
+            <li>inside framework:</li>
+                <ol>
+                    <li>cache/data (data is inside cache)</li>	
+                    <li>sessions</li>
+                    <li>views</li>
+                </ol>
+        </ol>
+    <li>Make a copy of the '.env.example' file and change its name to '.env' keep the original '.env.example' as a backup</li>
+    <li>Run php artisan key:generate to generate a new API key</li>
+</ol>
+
+<hr>
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
