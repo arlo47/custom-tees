@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'ShirtsController@index');
+
+Route::get('/{id}', 'ShirtsController@show');
+
+Route::get('/about', function() {
+    return view('about');
+});
+
+Route::get('/contact', function() {
+    return view('contact');
 });
