@@ -14,26 +14,30 @@ class ShirtsController extends Controller
      */
     public function index(Request $request)
     {
+        //if $request has the key 'search', we know search params where used. Therefore filter down based on $searchTerm
+        if ($request->exists('search')) {
+            $searchTerm = $request->input('search');
 
-        //paginate cannot be used on all() because it returns a collection
-        //You must use it on where() or orderBy(), which returns a query
-        $shirts = Shirt::orderBy('name', 'desc')->paginate(9);
-        
+            $shirts = Shirt::where('name', 'like', "%$searchTerm%")->paginate(9);
+        }
+        //else, display all shirts
+        else {
+            //paginate cannot be used on all() because it returns a collection
+            //You must use it on where() or orderBy(), which returns a query
+            $shirts = Shirt::orderBy('name', 'desc')->paginate(9);
+        }
+
         return view('catalog')->with('shirts', $shirts);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Filters shirts query based on request parameters
      *
      * @return \Illuminate\Http\Response
      */
-    public function search(Request $request)
+    public function filter(Request $request)
     {
-        $searchTerm = $request->input('search');
-
-        $shirts = Shirt::where('name', 'like', "%$searchTerm%")->get();
-
-        return view('search-results')->with('shirts', $shirts);
+        print_r($request->input());
     }
 
     /**

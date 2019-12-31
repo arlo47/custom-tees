@@ -19,7 +19,9 @@ Route::get('/shirts', 'ShirtsController@index');
 
 Route::get('/shirts/{id}', 'ShirtsController@show');
 
-Route::get('/search', 'ShirtsController@search');
+Route::get('/search', 'ShirtsController@index');
+
+Route::get('/filter', 'ShirtsController@filter');
 
 Route::get('/about', function() {
     return view('about');

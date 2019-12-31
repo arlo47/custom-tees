@@ -1,0 +1,17 @@
+.filters-sidebar {
+    background-color: #f4f4f4;
+    padding: 10px;
+}
+
+.filters-sidebar ul {
+    margin: 0;
+    padding: 0;
+}
+
+.filters-sidebar ul li {
+    list-style-type: none;
+}
+
+.filters-sidebar select {
+    margin: 10px 0;
+}
