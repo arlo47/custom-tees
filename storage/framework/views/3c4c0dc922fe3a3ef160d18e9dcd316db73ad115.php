@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <title>{{ config('app.name', 'myLSAPP') }}</title>      
+        <title><?php echo e(config('app.name', 'myLSAPP')); ?></title>      
     </head>
     <body>
 
         <header class="bg-dark">
-            @include('includes.search')
-            @include('includes.navbar')
+            <?php echo $__env->make('includes.search', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('includes.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </header>
 
 
         <div class="container">
-            @yield('content')
+            <?php echo $__env->yieldContent('content'); ?>
         </div>
 
         <!-- For Bootstrap -->
@@ -28,3 +28,4 @@
                 crossorigin="anonymous"></script>
     </body>
 </html>
+<?php /**PATH C:\Users\gregf\Desktop\custom-tees-greg\resources\views/layouts/app.blade.php ENDPATH**/ ?>

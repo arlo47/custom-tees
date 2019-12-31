@@ -20,4 +20,4 @@
       </ul>
     </div>
   </nav>
-  <br>
+  <br><?php /**PATH C:\Users\gregf\Desktop\custom-tees-greg\resources\views/includes/navbar.blade.php ENDPATH**/ ?>

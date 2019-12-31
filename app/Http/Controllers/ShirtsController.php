@@ -14,10 +14,23 @@ class ShirtsController extends Controller
      */
     public function index()
     {
-
-        $shirts = Shirt::all();
+        
+        //paginate cannot be used on all() because it returns a collection
+        //You must use it on where() or orderBy(), which returns a query
+        $shirts = Shirt::orderBy('name', 'desc')->paginate(9);
 
         return view('catalog')->with('shirts', $shirts);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        return $request->input();
+        //return view('search-results');
     }
 
     /**
@@ -49,7 +62,7 @@ class ShirtsController extends Controller
      */
     public function show($id)
     {
-        $shirt = Shirt::find($id);
+        $shirt = Shirt::find($id)->first();
         return view('single-shirt')->with('shirt', $shirt);
     }
 

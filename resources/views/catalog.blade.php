@@ -19,5 +19,8 @@
                 </p>
             </div>
         @endforeach
+        
+        <!-- pagination links -->
+        {{ $shirts->links() }}
     </div>
 @endsection

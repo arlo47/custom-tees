@@ -11,9 +11,15 @@
 |
 */
 
-Route::get('/', 'ShirtsController@index');
+Route::get('/', function() {
+    return view('index');
+});
 
-Route::get('/{id}', 'ShirtsController@show');
+Route::get('/shirts', 'ShirtsController@index');
+
+Route::get('/shirts/{id}', 'ShirtsController@show');
+
+Route::get('/search', 'ShirtsController@search');
 
 Route::get('/about', function() {
     return view('about');
