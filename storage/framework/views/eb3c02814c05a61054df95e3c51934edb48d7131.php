@@ -7,7 +7,7 @@
                 <img class="thumbnail img-fluid" src="<?php echo e(URL::to('/')); ?>/images/<?php echo e($shirt->image); ?>" height="400">
 
                 <h3>
-                    <a href="<?php echo e($shirt->id); ?>"><?php echo e($shirt->name); ?></a>
+                    <a href="/shirts/<?php echo e($shirt->id); ?>"><?php echo e($shirt->name); ?></a>
                 </h3>
 
                 <p><span><?php echo e($shirt->gender); ?></span> | 

@@ -9,7 +9,7 @@
                 <img class="thumbnail img-fluid" src="{{ URL::to('/') }}/images/{{ $shirt->image }}" height="400">
 
                 <h3>
-                    <a href="{{ $shirt->id }}">{{ $shirt->name }}</a>
+                    <a href="/shirts/{{ $shirt->id }}">{{ $shirt->name }}</a>
                 </h3>
 
                 <p><span>{{ $shirt->gender }}</span> | 

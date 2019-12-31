@@ -12,13 +12,13 @@ class ShirtsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        
+
         //paginate cannot be used on all() because it returns a collection
         //You must use it on where() or orderBy(), which returns a query
         $shirts = Shirt::orderBy('name', 'desc')->paginate(9);
-
+        
         return view('catalog')->with('shirts', $shirts);
     }
 
@@ -29,8 +29,11 @@ class ShirtsController extends Controller
      */
     public function search(Request $request)
     {
-        return $request->input();
-        //return view('search-results');
+        $searchTerm = $request->input('search');
+
+        $shirts = Shirt::where('name', 'like', "%$searchTerm%")->get();
+
+        return view('search-results')->with('shirts', $shirts);
     }
 
     /**
