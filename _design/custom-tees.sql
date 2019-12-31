@@ -1,0 +1,20 @@
+use test;
+
+CREATE TABLE shirts (
+	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    name NVARCHAR(100) NOT NULL,
+    price DECIMAL(13,2) NOT NULL,
+    color NVARCHAR(20) NOT NULL,
+    gender NVARCHAR(5) NOT NULL,
+    size NVARCHAR(5) NOT NULL,
+    image NVARCHAR(100) NOT NULL
+);
+
+LOAD DATA INFILE 'C:\ProgramData\MySQL\MySQL Server 5.6\Uploads\content.csv'
+INTO TABLE shirts
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+SHOW VARIABLES LIKE 'secure_file_priv';
