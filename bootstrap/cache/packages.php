@@ -38,4 +38,11 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'spatie/laravel-query-builder' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\QueryBuilder\\QueryBuilderServiceProvider',
+    ),
+  ),
 );

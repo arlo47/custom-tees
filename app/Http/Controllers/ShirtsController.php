@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Shirt;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class ShirtsController extends Controller
 {
@@ -31,13 +32,49 @@ class ShirtsController extends Controller
     }
 
     /**
-     * Filters shirts query based on request parameters
+     * Creates a query of all shirts and filters the query down based on
+     * the parameters in $request.
      *
      * @return \Illuminate\Http\Response
      */
     public function filter(Request $request)
     {
-        print_r($request->input());
+
+        $shirtQuery = Shirt::query();
+
+        if($request->input('gender')) {
+            $shirtQuery->where('gender', $request->input('gender'));
+        }
+        if($request->input('size')) {
+            $shirtQuery->where('size', $request->input('size'));
+        }
+        if($request->input('color')) {
+            $shirtQuery->where('color', $request->input('color'));
+        }
+
+        //price filters
+        if($request->input('minPrice') && $request->input('maxPrice')) {
+            //parse to floats
+            $minPrice = floatval($request->input('minPrice'));
+            $maxPrice = floatval($request->input('maxPrice'));
+
+            $shirtQuery->whereBetween('price', [$minPrice, $maxPrice]);
+        }
+        else if($request->input('minPrice')) {
+            $minPrice = floatval($request->input('minPrice'));
+
+            $shirtQuery->where('price', '>=', $minPrice);
+        }
+        else if($request->input('maxPrice')) {
+            $maxPrice = floatval($request->input('maxPrice'));
+
+            $shirtQuery->where('price', '<=', $maxPrice);
+        }
+
+        //return $shirtQuery->get();
+
+        return view('catalog')->with('shirts', $shirtQuery->paginate(9));
+        
     }
 
     /**

@@ -1,11 +1,13 @@
  <form class="filters-sidebar" method="GET" action="/filter">
  
     <select class="d-block" name="gender" id="gender-dropdown">
+        <option value="">gender</option>
         <option value="M">Male</option>
         <option value="F">Female</option>
     </select>
 
     <select class="d-block" name="size" id="size-dropdown">
+        <option value="">size</option>
         <option value="S">Small</option>
         <option value="M">Medium</option>
         <option value="L">Large</option>
@@ -13,6 +15,7 @@
     </select>
 
     <select class="d-block" name="color" id="color-dropdown">
+        <option value="">color</option>
         <option value="black">Black</option>
         <option value="white">White</option>
     </select>
