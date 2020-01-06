@@ -102,7 +102,7 @@ class ShirtsController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -113,7 +113,17 @@ class ShirtsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $shirt = new Shirt;
+        $shirt->name = $request->input('name');
+        $shirt->gender = $request->input('gender');
+        $shirt->size = $request->input('size');
+        $shirt->color = $request->input('color');
+        $shirt->price = $request->input('price');
+        $shirt->image = 'placeholder.jpg';
+        $shirt->save();
+
+        return redirect('/admin')->with('success', 'Shirt created!');
     }
 
     /**
@@ -134,9 +144,10 @@ class ShirtsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $shirt = Shirt::find($id);
+        return view('edit')->with('shirt', $shirt);
     }
 
     /**
@@ -148,7 +159,15 @@ class ShirtsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $shirt = Shirt::find($id);
+        $shirt->name = $request->input('name');
+        $shirt->gender = $request->input('gender');
+        $shirt->size = $request->input('size');
+        $shirt->color = $request->input('color');
+        $shirt->price = $request->input('price');
+        $shirt->save();
+
+        return redirect('/admin')->with('success', 'Shirt updated!');
     }
 
     /**
@@ -159,6 +178,8 @@ class ShirtsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $shirt = Shirt::find($id);
+        $shirt->delete();
+        return redirect('/admin')->with('success', 'Post Deleted!');
     }
 }

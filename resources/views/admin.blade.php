@@ -6,8 +6,9 @@
     <div class="admin-container">
         @include('includes.admin-filters')
 
-            <button class="btn btn-primary my-3">Create New</button>
-
+            <a href="/admin/create" class="btn btn-primary my-3">Create New</a>
+            {{ $shirts->links() }}
+            
             <table class="table">
                 <thead>
                     <th scope="col">ID</th>
@@ -28,8 +29,11 @@
                             <th>{{ $shirt->size }}</th>
                             <th>${{ $shirt->price }}</th>
                             <th>
-                                <button class="btn btn-info">Update</button>
-                                <button class="btn btn-danger">Delete</button>
+                                <a href="/admin/edit/{{ $shirt->id }}" class="btn btn-info">Update</a>
+                                {!! Form::open(['action' => ['ShirtsController@destroy', $shirt->id], 'method' => 'POST', 'class' => 'd-inline']) !!}
+                                    {{ Form::hidden('_method', 'DELETE') }}
+                                    {{ Form::Submit('Delete', ['class' => 'btn btn-danger']) }}
+                                {!! Form::close() !!}
                             </th>
                         </tr>
                     @endforeach

@@ -4,8 +4,10 @@
     <div class="admin-container">
         <?php echo $__env->make('includes.admin-filters', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            <button class="btn btn-primary my-3">Create New</button>
+            <a href="/admin/create" class="btn btn-primary my-3">Create New</a>
+            <?php echo e($shirts->links()); ?>
 
+            
             <table class="table">
                 <thead>
                     <th scope="col">ID</th>
@@ -26,8 +28,15 @@
                             <th><?php echo e($shirt->size); ?></th>
                             <th>$<?php echo e($shirt->price); ?></th>
                             <th>
-                                <button class="btn btn-info">Update</button>
-                                <button class="btn btn-danger">Delete</button>
+                                <a href="/admin/edit/<?php echo e($shirt->id); ?>" class="btn btn-info">Update</a>
+                                <?php echo Form::open(['action' => ['ShirtsController@destroy', $shirt->id], 'method' => 'POST', 'class' => 'd-inline']); ?>
+
+                                    <?php echo e(Form::hidden('_method', 'DELETE')); ?>
+
+                                    <?php echo e(Form::Submit('Delete', ['class' => 'btn btn-danger'])); ?>
+
+                                <?php echo Form::close(); ?>
+
                             </th>
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
