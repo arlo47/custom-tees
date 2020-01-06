@@ -31,6 +31,24 @@ class ShirtsController extends Controller
         return view('catalog')->with('shirts', $shirts);
     }
 
+    public function adminIndex(Request $request)
+    {
+        //if $request has the key 'search', we know search params where used. Therefore filter down based on $searchTerm
+        if ($request->exists('search')) {
+            $searchTerm = $request->input('search');
+
+            $shirts = Shirt::where('name', 'like', "%$searchTerm%")->paginate(9);
+        }
+        //else, display all shirts
+        else {
+            //paginate cannot be used on all() because it returns a collection
+            //You must use it on where() or orderBy(), which returns a query
+            $shirts = Shirt::orderBy('id', 'asc')->paginate(20);
+        }
+
+        return view('admin')->with('shirts', $shirts);
+    }
+
     /**
      * Creates a query of all shirts and filters the query down based on
      * the parameters in $request.

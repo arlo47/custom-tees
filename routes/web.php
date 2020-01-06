@@ -23,6 +23,8 @@ Route::get('/search', 'ShirtsController@index');
 
 Route::get('/filter', 'ShirtsController@filter');
 
+Route::get('/admin', 'ShirtsController@adminIndex');
+
 Route::get('/about', function() {
     return view('about');
 });
