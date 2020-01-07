@@ -50,6 +50,10 @@
 
         </div>
 
+        <!-- hidden element to spoof PUT request -->
+        <?php echo e(Form::hidden('_method', 'PUT')); ?>
+
+
         <?php echo e(Form::submit('Save', ['class' => 'btn btn-primary'])); ?>
 
     <?php echo Form::close(); ?>

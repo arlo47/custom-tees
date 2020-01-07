@@ -31,6 +31,7 @@
                                 <a href="/admin/edit/<?php echo e($shirt->id); ?>" class="btn btn-info">Update</a>
                                 <?php echo Form::open(['action' => ['ShirtsController@destroy', $shirt->id], 'method' => 'POST', 'class' => 'd-inline']); ?>
 
+                                    <!-- hidden element to spoof DELETE request -->
                                     <?php echo e(Form::hidden('_method', 'DELETE')); ?>
 
                                     <?php echo e(Form::Submit('Delete', ['class' => 'btn btn-danger'])); ?>

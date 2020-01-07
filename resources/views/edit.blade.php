@@ -41,6 +41,9 @@
             {{ Form::number('Price', $shirt->price) }}
         </div>
 
+        <!-- hidden element to spoof PUT request -->
+        {{ Form::hidden('_method', 'PUT') }}
+
         {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
     {!! Form::close() !!}
 @endsection

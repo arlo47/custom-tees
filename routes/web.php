@@ -30,7 +30,7 @@ Route::get('/admin/create', 'ShirtsController@create');
 Route::post('/admin/create', 'ShirtsController@store');
 
 Route::get('/admin/edit/{id}', 'ShirtsController@edit');
-Route::post('/admin/edit/{id}', 'ShirtsController@update');
+Route::put('/admin/edit/{id}', 'ShirtsController@update');
 
 Route::delete('/admin/delete/{id}', 'ShirtsController@destroy');
 

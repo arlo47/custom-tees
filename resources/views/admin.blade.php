@@ -31,6 +31,7 @@
                             <th>
                                 <a href="/admin/edit/{{ $shirt->id }}" class="btn btn-info">Update</a>
                                 {!! Form::open(['action' => ['ShirtsController@destroy', $shirt->id], 'method' => 'POST', 'class' => 'd-inline']) !!}
+                                    <!-- hidden element to spoof DELETE request -->
                                     {{ Form::hidden('_method', 'DELETE') }}
                                     {{ Form::Submit('Delete', ['class' => 'btn btn-danger']) }}
                                 {!! Form::close() !!}
