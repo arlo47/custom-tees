@@ -1,9 +1,7 @@
  <form class="filters-sidebar" method="GET" action="/filter">
- 
+    <h2 class="h4"><i class="material-icons">filter_list</i> Filters</h2>
     <div class="row">
         <div class="form-group col-4">
-            <label><strong>Gender</strong></label>
-
             <select class="form-control" name="gender" id="gender-dropdown">
                 <option value="">gender</option>
                 <option value="M">Male</option>
@@ -12,8 +10,6 @@
         </div>
 
         <div class="form-group col-4">
-            <label><strong>Size</strong></label>
-
             <select class="form-control" name="size" id="size-dropdown">
                 <option value="">size</option>
                 <option value="S">Small</option>
@@ -24,8 +20,6 @@
         </div>
 
         <div class="form-group col-4">
-            <label><strong>Color</strong></label>
-
             <select class="form-control" name="color" id="color-dropdown">
                 <option value="">color</option>
                 <option value="black">Black</option>
@@ -36,18 +30,11 @@
     </div>
     <div class="row">
         <div class="form-group col-4">
-            <label class="float-right"><strong>Price</strong></label>
+            <input class="form-control" name="minPrice" type="number" placeholder="Min Price">
         </div>
         <div class="form-group col-4">
-            <label for="min-input">Min:</label>
-            <input class="form-control" name="minPrice" type="number">
+            <input class="form-control" name="maxPrice" type="number" placeholder="Max Price">
         </div>
-        <div class="form-group col-4">
-            <label for="min-input">Max:</label>
-            <input class="form-control" name="maxPrice" type="number">
-        </div>
-        
     </div>
-
     <input class="btn btn-primary" type="submit" value="Filter">
 </form>

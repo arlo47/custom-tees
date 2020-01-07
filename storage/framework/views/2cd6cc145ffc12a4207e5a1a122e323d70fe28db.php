@@ -1,5 +1,5 @@
  <form class="filters-sidebar form-group w-10" method="GET" action="/filter">
- 
+    <h2 class="h4"><i class="material-icons">filter_list</i> Filters</h2>
     <select class="d-block form-control" name="gender" id="gender-dropdown">
         <option value="">gender</option>
         <option value="M">Male</option>
