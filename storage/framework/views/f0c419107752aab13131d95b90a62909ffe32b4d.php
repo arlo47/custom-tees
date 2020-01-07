@@ -14,7 +14,10 @@
             <li>Price: $<?php echo e($shirt->price); ?></li>
         </ul>
         
-        <a href="#" class="btn btn-primary">Add to Cart</a>
+        <a href="#" class="cart-btn btn btn-primary d-flex align-items-center justify-content-center">
+            <i class="material-icons">shopping_cart</i>
+            Add to Cart
+        </a>
     </div>
 
 </div>

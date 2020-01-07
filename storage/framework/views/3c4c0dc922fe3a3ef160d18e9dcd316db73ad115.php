@@ -5,13 +5,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <title><?php echo e(config('app.name', 'myLSAPP')); ?></title>      
+        <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <title>Custom Tees</title>      
     </head>
     <body>
 
-        <header class="bg-dark">
-            <?php echo $__env->make('includes.search', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            <?php echo $__env->make('includes.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <header class="main-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-5">
+                        <h1 class="text-center text-lg-left"><a class="brand-name" href="#">Custom Tees</a></h1>
+                    </div>
+                    <div class="col-12 col-lg-7 w-lg-100 d-lg-flex align-items-lg-center">
+                        <?php echo $__env->make('includes.search', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    </div>
+                </div>
+            </div>
+            <section class="nav-row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 d-lg-flex justify-content-lg-end">
+                            <?php echo $__env->make('includes.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </header>
 
 
