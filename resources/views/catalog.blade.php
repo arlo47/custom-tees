@@ -3,29 +3,32 @@
 @section('content')
     <h1>Catalog Page</h1>
     
-    <div class="shirts-container d-flex flex-direction-row">
-        @include('includes.filters')
+    <div class="shirts-container row">
+        <div class="col-12 col-lg-3">
+            @include('includes.filters')
+        </div>
 
-        <div class="d-flex flex-wrap justify-content-between">
-            @if(count($shirts) > 0)
-                @foreach($shirts as $shirt)
-                    <div class="w-25 mx-4 my-1">
-                        <img class="thumbnail img-fluid" src="{{ URL::to('/') }}/images/{{ $shirt->image }}" height="400">
-        
-                        <h3>
-                            <a href="/shirts/{{ $shirt->id }}">{{ $shirt->name }}</a>
-                        </h3>
-        
-                        <p><span>{{ $shirt->gender }}</span> | 
-                            <span>{{ $shirt->color }}</span> | 
-                            <span>{{ $shirt->size }}</span> |
-                            <span>${{ $shirt->price }}</span>
-                        </p>
-                    </div>
-                @endforeach
-            @else
-            <p>No search results.</p>
-            @endif
+        <div class="col-12 col-lg-9 d-flex flex-wrap justify-content-between">
+            <div class="row">
+                @if(count($shirts) > 0)
+                    @foreach($shirts as $shirt)
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card m-1 p-1">
+                                <a class="d-block text-dark" href="/shirts/{{ $shirt->id }}">
+                                    <img class="thumbnail img-fluid card-img-top" src="{{ URL::to('/') }}/images/{{ $shirt->image }}" height="400">
+                                </a>
+                                
+                                <div class="card-body">
+                                    <h3 class="card-title h5 mt-2">{{ $shirt->name }}</h3>
+                                    <p class="card-text h3">${{ $shirt->price }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                <p>No search results.</p>
+                @endif
+            </div>
             <!-- pagination links -->
             {{ $shirts->links() }}
         </div>

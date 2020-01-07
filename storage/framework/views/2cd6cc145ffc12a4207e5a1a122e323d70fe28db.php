@@ -19,18 +19,16 @@
         <option value="black">Black</option>
         <option value="white">White</option>
     </select>
+    <hr>
+    <section>
+        <label for="min-input">Min Price:</label>
+        <input class="form-control" name="minPrice" type="number">
+    </section>
+    <section>
+        <label for="min-input">Max Price:</label>
+        <input class="form-control" name="maxPrice" type="number">
+    </section>
 
-    <h3>Price</h3>
-    
-        <section>
-            <label for="min-input">Min:</label>
-            <input class="form-control" name="minPrice" type="number">
-        </section>
-        <section>
-            <label for="min-input">Max:</label>
-            <input class="form-control" name="maxPrice" type="number">
-        </section>
-
-        <input class="btn btn-primary" type="submit" value="Filter">
+    <input class="btn btn-primary my-2" type="submit" value="Filter">
 </form>
 <?php /**PATH C:\Users\gregf\Desktop\custom-tees-greg\resources\views/includes/filters.blade.php ENDPATH**/ ?>

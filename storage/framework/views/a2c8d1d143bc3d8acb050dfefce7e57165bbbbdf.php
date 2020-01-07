@@ -20,7 +20,7 @@
       </ul>
       <ul class="navbar-nav user-info">    
         <li class="nav-item"><a class="nav-link text-light d-flex align-items-center" href="#"><i class="material-icons mr-1">account_box</i> Login / Sign Up</a></li>
-        <li class="nav-item"><a class="nav-link text-light d-flex align-items-center" href="#"><i class="material-icons mr-1">settings_applications</i> Admin Panel</a></li>      
+        <li class="nav-item"><a class="nav-link text-light d-flex align-items-center" href="/admin"><i class="material-icons mr-1">settings_applications</i> Admin Panel</a></li>      
       </ul>
     </div>
   </nav>

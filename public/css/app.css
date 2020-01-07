@@ -51,3 +51,7 @@ ul.user-info {
 .main-image {
     margin: 1em;
 }
+
+a:hover {
+    text-decoration: none !important;
+}
