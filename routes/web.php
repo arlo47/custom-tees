@@ -35,9 +35,7 @@ Route::put('/admin/edit/{id}', 'ShirtsController@update');
 
 Route::delete('/admin/delete/{id}', 'ShirtsController@destroy');
 
-
-
-
+//'static' pages
 Route::get('/about', function() {
     return view('about');
 });
