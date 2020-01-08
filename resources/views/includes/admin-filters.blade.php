@@ -1,4 +1,4 @@
- <form class="filters-sidebar" method="GET" action="/filter">
+ <form class="filters-sidebar" method="GET" action="/admin/filter">
     <h2 class="h4"><i class="material-icons">filter_list</i> Filters</h2>
     <div class="row">
         <div class="form-group col-4">

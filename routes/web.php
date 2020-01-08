@@ -22,6 +22,7 @@ Route::get('/shirts/{id}', 'ShirtsController@show');
 //search bar and filters
 Route::get('/search', 'ShirtsController@index');
 Route::get('/filter', 'ShirtsController@filter');
+Route::get('/admin/filter', 'ShirtsController@adminFilter');
 
 //CRUD operations
 Route::get('/admin', 'ShirtsController@adminIndex');

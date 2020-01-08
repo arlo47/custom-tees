@@ -29,7 +29,7 @@ class ShirtsController extends Controller
         }
 
         //get list of colors for filters
-        $colorList = Shirt::all()->unique('color')->pluck('color');
+        $colorList = $this->generateColorList();
 
         return view('catalog')->with('shirts', $shirts)->with('colors', $colorList);
     }
@@ -50,7 +50,7 @@ class ShirtsController extends Controller
         }
 
         //get list of colors for filters
-        $colorList = Shirt::all()->unique('color')->pluck('color');
+        $colorList = $this->generateColorList();
 
         return view('admin')->with('shirts', $shirts)->with('colors', $colorList);
     }
@@ -65,6 +65,9 @@ class ShirtsController extends Controller
     {
 
         $shirtQuery = Shirt::query();
+
+        //get list of colors for filters
+        $colorList = $this->generateColorList();
 
         if($request->input('gender')) {
             $shirtQuery->where('gender', $request->input('gender'));
@@ -95,9 +98,54 @@ class ShirtsController extends Controller
             $shirtQuery->where('price', '<=', $maxPrice);
         }
 
-        //return $shirtQuery->get();
+        return view('catalog')->with('shirts', $shirtQuery->paginate(9))->with('colors', $colorList);
+        
+    }
 
-        return view('catalog')->with('shirts', $shirtQuery->paginate(9));
+    /**
+     * Creates a query of all shirts and filters the query down based on
+     * the parameters in $request.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminFilter(Request $request)
+    {
+
+        $shirtQuery = Shirt::query();
+
+        //get list of colors for filters
+        $colorList = $this->generateColorList();
+
+        if($request->input('gender')) {
+            $shirtQuery->where('gender', $request->input('gender'));
+        }
+        if($request->input('size')) {
+            $shirtQuery->where('size', $request->input('size'));
+        }
+        if($request->input('color')) {
+            $shirtQuery->where('color', $request->input('color'));
+        }
+
+        //price filters
+        if($request->input('minPrice') && $request->input('maxPrice')) {
+            //parse to floats
+            $minPrice = floatval($request->input('minPrice'));
+            $maxPrice = floatval($request->input('maxPrice'));
+
+            $shirtQuery->whereBetween('price', [$minPrice, $maxPrice]);
+        }
+        else if($request->input('minPrice')) {
+            $minPrice = floatval($request->input('minPrice'));
+
+            $shirtQuery->where('price', '>=', $minPrice);
+        }
+        else if($request->input('maxPrice')) {
+            $maxPrice = floatval($request->input('maxPrice'));
+
+            $shirtQuery->where('price', '<=', $maxPrice);
+        }
+
+        return view('admin')->with('shirts', $shirtQuery->paginate(9))->with('colors', $colorList);
         
     }
 
@@ -187,5 +235,13 @@ class ShirtsController extends Controller
         $shirt = Shirt::find($id);
         $shirt->delete();
         return redirect('/admin')->with('success', 'Post Deleted!');
+    }
+
+    /**
+     * gets list of unique colors from shirts table
+     * @return string[]
+     */
+    public function generateColorList() {
+        return Shirt::all()->unique('color')->pluck('color');
     }
 }
