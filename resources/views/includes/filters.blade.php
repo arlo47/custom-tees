@@ -16,8 +16,9 @@
 
     <select class="d-block form-control" name="color" id="color-dropdown">
         <option value="">color</option>
-        <option value="black">Black</option>
-        <option value="white">White</option>
+        @foreach($colors as $color)
+            <option value="{{ $color }}">{{ ucfirst($color) }}</option>
+        @endforeach
     </select>
     <hr>
     <section>

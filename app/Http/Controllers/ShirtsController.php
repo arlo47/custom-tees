@@ -28,7 +28,10 @@ class ShirtsController extends Controller
             $shirts = Shirt::orderBy('name', 'desc')->paginate(9);
         }
 
-        return view('catalog')->with('shirts', $shirts);
+        //get list of colors for filters
+        $colorList = Shirt::all()->unique('color')->pluck('color');
+
+        return view('catalog')->with('shirts', $shirts)->with('colors', $colorList);
     }
 
     public function adminIndex(Request $request)
@@ -46,7 +49,10 @@ class ShirtsController extends Controller
             $shirts = Shirt::orderBy('id', 'asc')->paginate(20);
         }
 
-        return view('admin')->with('shirts', $shirts);
+        //get list of colors for filters
+        $colorList = Shirt::all()->unique('color')->pluck('color');
+
+        return view('admin')->with('shirts', $shirts)->with('colors', $colorList);
     }
 
     /**
