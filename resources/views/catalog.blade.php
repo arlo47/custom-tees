@@ -30,7 +30,7 @@
                 @endif
             </div>
             <!-- pagination links -->
-            {{ $shirts->links() }}
+            {{ $shirts->appends(request()->input())->links() }}
         </div>
     </div>
 

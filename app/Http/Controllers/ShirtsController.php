@@ -139,7 +139,7 @@ class ShirtsController extends Controller
      */
     public function show($id)
     {
-        $shirt = Shirt::find($id)->first();
+        $shirt = Shirt::find($id);
         return view('single-shirt')->with('shirt', $shirt);
     }
 
