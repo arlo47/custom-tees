@@ -1,57 +1,59 @@
 .filters-sidebar {
-    background-color: #f4f4f4;
-    padding: 10px;
+  background-color: #f4f4f4;
+  padding: 10px;
 }
 
 .filters-sidebar ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .filters-sidebar ul li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .filters-sidebar select {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .brand-name {
-    font-family: 'Oleo Script', cursive;
-    color: #FFF;
-    text-decoration: none;
-    font-size: 1.6em;
+  font-family: 'Oleo Script', cursive;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 1.6em;
 }
 
 .brand-name:hover {
-    color: #f4f4f4;
-    text-decoration: none;
+  color: #f4f4f4;
+  text-decoration: none;
 }
 
 header.main-header {
-    background-color: #04396C;
+  background-color: #04396C;
 }
 
 ul.user-info {
-    font-size: 0.8em;
+  font-size: 0.8em;
 }
 
 .cart-btn {
-    width: 8.6em;
+  width: 8.6em;
 }
 
 .navbar-toggler-icon i {
-    color: #FFF;
+  color: #FFF;
 }
 
 .nav-row {
-    background-color: #031F4B;
+  background-color: #031F4B;
 }
 
 .main-image {
-    margin: 1em;
+  margin: 1em;
 }
 
 a:hover {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
+
+

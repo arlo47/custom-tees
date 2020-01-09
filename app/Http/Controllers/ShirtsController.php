@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Shirt;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\ShoppingCart;
+use Auth;
+use Session;
 
 class ShirtsController extends Controller
 {
@@ -28,14 +31,12 @@ class ShirtsController extends Controller
             $shirts = Shirt::orderBy('name', 'desc')->paginate(9);
         }
 
-        //get list of colors for filters
-        $colorList = $this->generateColorList();
-
-        return view('catalog')->with('shirts', $shirts)->with('colors', $colorList);
+        return view('catalog')->with('shirts', $shirts);
     }
 
     public function adminIndex(Request $request)
     {
+        $user = Auth::user();
         //if $request has the key 'search', we know search params where used. Therefore filter down based on $searchTerm
         if ($request->exists('search')) {
             $searchTerm = $request->input('search');
@@ -49,10 +50,8 @@ class ShirtsController extends Controller
             $shirts = Shirt::orderBy('id', 'asc')->paginate(20);
         }
 
-        //get list of colors for filters
-        $colorList = $this->generateColorList();
-
-        return view('admin')->with('shirts', $shirts)->with('colors', $colorList);
+        return view('admin')->with('shirts', $shirts)
+                            ->with('user',$user);
     }
 
     /**
@@ -66,9 +65,6 @@ class ShirtsController extends Controller
 
         $shirtQuery = Shirt::query();
 
-        //get list of colors for filters
-        $colorList = $this->generateColorList();
-
         if($request->input('gender')) {
             $shirtQuery->where('gender', $request->input('gender'));
         }
@@ -98,54 +94,9 @@ class ShirtsController extends Controller
             $shirtQuery->where('price', '<=', $maxPrice);
         }
 
-        return view('catalog')->with('shirts', $shirtQuery->paginate(9))->with('colors', $colorList);
-        
-    }
+        //return $shirtQuery->get();
 
-    /**
-     * Creates a query of all shirts and filters the query down based on
-     * the parameters in $request.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function adminFilter(Request $request)
-    {
-
-        $shirtQuery = Shirt::query();
-
-        //get list of colors for filters
-        $colorList = $this->generateColorList();
-
-        if($request->input('gender')) {
-            $shirtQuery->where('gender', $request->input('gender'));
-        }
-        if($request->input('size')) {
-            $shirtQuery->where('size', $request->input('size'));
-        }
-        if($request->input('color')) {
-            $shirtQuery->where('color', $request->input('color'));
-        }
-
-        //price filters
-        if($request->input('minPrice') && $request->input('maxPrice')) {
-            //parse to floats
-            $minPrice = floatval($request->input('minPrice'));
-            $maxPrice = floatval($request->input('maxPrice'));
-
-            $shirtQuery->whereBetween('price', [$minPrice, $maxPrice]);
-        }
-        else if($request->input('minPrice')) {
-            $minPrice = floatval($request->input('minPrice'));
-
-            $shirtQuery->where('price', '>=', $minPrice);
-        }
-        else if($request->input('maxPrice')) {
-            $maxPrice = floatval($request->input('maxPrice'));
-
-            $shirtQuery->where('price', '<=', $maxPrice);
-        }
-
-        return view('admin')->with('shirts', $shirtQuery->paginate(9))->with('colors', $colorList);
+        return view('catalog')->with('shirts', $shirtQuery->paginate(9));
         
     }
 
@@ -188,7 +139,7 @@ class ShirtsController extends Controller
      */
     public function show($id)
     {
-        $shirt = Shirt::find($id);
+        $shirt = Shirt::find($id)->first();
         return view('single-shirt')->with('shirt', $shirt);
     }
 
@@ -237,11 +188,4 @@ class ShirtsController extends Controller
         return redirect('/admin')->with('success', 'Post Deleted!');
     }
 
-    /**
-     * gets list of unique colors from shirts table
-     * @return string[]
-     */
-    public function generateColorList() {
-        return Shirt::all()->unique('color')->pluck('color');
-    }
 }

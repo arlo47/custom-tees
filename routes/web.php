@@ -11,6 +11,12 @@
 |
 */
 
+//Authentication Routes
+Auth::routes();
+
+//Route after login
+Route::get('/home', 'UsersController@checkUser');
+
 Route::get('/', function() {
     return view('index');
 });
@@ -22,7 +28,6 @@ Route::get('/shirts/{id}', 'ShirtsController@show');
 //search bar and filters
 Route::get('/search', 'ShirtsController@index');
 Route::get('/filter', 'ShirtsController@filter');
-Route::get('/admin/filter', 'ShirtsController@adminFilter');
 
 //CRUD operations
 Route::get('/admin', 'ShirtsController@adminIndex');
@@ -35,7 +40,9 @@ Route::put('/admin/edit/{id}', 'ShirtsController@update');
 
 Route::delete('/admin/delete/{id}', 'ShirtsController@destroy');
 
-//'static' pages
+
+
+
 Route::get('/about', function() {
     return view('about');
 });
@@ -43,3 +50,8 @@ Route::get('/about', function() {
 Route::get('/contact', function() {
     return view('contact');
 });
+
+
+//Add to Shopping cart Route
+Route::get('/add-to-cart/{id}', 'ShirtsController@addToCart');
+

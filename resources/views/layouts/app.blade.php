@@ -28,6 +28,7 @@
                     <div class="row">
                         <div class="col-12 d-lg-flex justify-content-lg-end">
                             @include('includes.navbar')
+                            
                         </div>
                     </div>
                 </div>

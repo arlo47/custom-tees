@@ -1,4 +1,4 @@
- <form class="filters-sidebar" method="GET" action="/admin/filter">
+ <form class="filters-sidebar" method="GET" action="/filter">
     <h2 class="h4"><i class="material-icons">filter_list</i> Filters</h2>
     <div class="row">
         <div class="form-group col-4">
@@ -22,9 +22,8 @@
         <div class="form-group col-4">
             <select class="form-control" name="color" id="color-dropdown">
                 <option value="">color</option>
-                <?php $__currentLoopData = $colors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $color): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option value="<?php echo e($color); ?>"><?php echo e(ucfirst($color)); ?></option>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <option value="black">Black</option>
+                <option value="white">White</option>
             </select>
         </div>
 

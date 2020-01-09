@@ -18,9 +18,32 @@
           <a class="nav-link text-light" href="/contact">Contact</a>
         </li>
       </ul>
-      <ul class="navbar-nav user-info">    
-        <li class="nav-item"><a class="nav-link text-light d-flex align-items-center" href="#"><i class="material-icons mr-1">account_box</i> Login / Sign Up</a></li>
-        <li class="nav-item"><a class="nav-link text-light d-flex align-items-center" href="/admin"><i class="material-icons mr-1">settings_applications</i> Admin Panel</a></li>      
+      <ul class="navbar-nav user-info">   
+      @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item">
+                                <span class="text-white">{{ Auth::user()->name }}</span>
+                                <li class="nav-item">
+                                  <a class="nav-link text-light d-flex align-items-center" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                  </a>
+                                  @if(Auth::user()->id == 1)
+                                  <a href="/admin">admin panel</a>
+                                  @endif    
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest      
       </ul>
     </div>
   </nav>

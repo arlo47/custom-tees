@@ -18,7 +18,7 @@
                         <li class="list-group-item">Price: ${{ $shirt->price }}</li>
                     </ul>
                     
-                    <a href="#" class="cart-btn m-3 btn btn-primary d-flex align-items-center justify-content-center">
+                    <a href="/add-to-cart/{{$shirt->id}}" class="cart-btn m-3 btn btn-primary d-flex align-items-center justify-content-center">
                         <i class="material-icons">shopping_cart</i>
                         Add to Cart
                     </a>
