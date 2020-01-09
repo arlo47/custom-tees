@@ -28,7 +28,7 @@
                 <?php endif; ?>
             </div>
             <!-- pagination links -->
-            <?php echo e($shirts->links()); ?>
+            <?php echo e($shirts->appends(request()->input())->links()); ?>
 
         </div>
     </div>
