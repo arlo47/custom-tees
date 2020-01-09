@@ -48,7 +48,7 @@
 
             <div class="d-flex justify-content-end">
                 <!-- pagination links -->
-                {{ $shirts->links() }}
+                {{ $shirts->appends(request()->input())->links() }}
             </div>
     </div>
 

@@ -15,7 +15,7 @@
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card m-1 p-1">
                                 <a class="d-block text-dark" href="/shirts/{{ $shirt->id }}">
-                                    <img class="thumbnail img-fluid card-img-top" src="{{ URL::to('/') }}/images/{{ $shirt->image }}" height="400">
+                                    <img class="thumbnail img-fluid card-img-top" src="{{ URL::to('/') }}/images/shirts/{{ $shirt->image }}" height="400">
                                 </a>
                                 
                                 <div class="card-body">

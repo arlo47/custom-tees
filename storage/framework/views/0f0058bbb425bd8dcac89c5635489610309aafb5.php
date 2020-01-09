@@ -13,7 +13,7 @@
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card m-1 p-1">
                                 <a class="d-block text-dark" href="/shirts/<?php echo e($shirt->id); ?>">
-                                    <img class="thumbnail img-fluid card-img-top" src="<?php echo e(URL::to('/')); ?>/images/<?php echo e($shirt->image); ?>" height="400">
+                                    <img class="thumbnail img-fluid card-img-top" src="<?php echo e(URL::to('/')); ?>/images/shirts/<?php echo e($shirt->image); ?>" height="400">
                                 </a>
                                 
                                 <div class="card-body">
