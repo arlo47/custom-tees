@@ -14,7 +14,7 @@
             {{ Form::select('gender',[
                 'M' => 'Male',
                 'F' => 'Female'
-               ], $shirt->gender) }}
+               ], $shirt->gender, ['class' => 'form-control']) }}
         </div>
 
         <div class="form-group">
@@ -24,7 +24,7 @@
                 'M' => 'Medium',
                 'L' => 'Large',
                 'XL' => 'Extra Large'
-        ], $shirt->size) }}
+        ], $shirt->size, ['class' => 'form-control']) }}
         </div>
 
         <div class="form-group">
@@ -33,12 +33,12 @@
                 'black' => 'Black',
                 'white' => 'White',
                 'grey' => 'Grey'
-        ], $shirt->color) }}
+        ], $shirt->color, ['class' => 'form-control']) }}
         </div>
 
         <div class="form-group">
             {{ Form::label('price', 'Price') }}
-            {{ Form::number('price', $shirt->price) }}
+            {{ Form::number('price', $shirt->pricem, ['class' => 'form-control']) }}
         </div>
 
         <!-- hidden element to spoof PUT request -->

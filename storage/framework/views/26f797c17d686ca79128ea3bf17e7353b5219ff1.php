@@ -1,6 +1,17 @@
 <?php $__env->startSection('content'); ?>
     <h1>Create New Shirt</h1>
-    <?php echo Form::open(['action' => 'ShirtsController@store', 'method' => 'POST']); ?>
+
+    <?php if($errors->any()): ?>
+        <div class="alert alert-danger">
+            <ul>
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($error); ?></li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
+    <?php echo Form::open(['action' => 'ShirtsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']); ?>
 
 
         <div class="form-group">
@@ -16,7 +27,7 @@
             <?php echo e(Form::select('gender',[
                 'M' => 'Male',
                 'F' => 'Female'
-            ])); ?>
+            ], null, ['class' => 'form-control'])); ?>
 
         </div>
 
@@ -28,7 +39,7 @@
                 'M' => 'Medium',
                 'L' => 'Large',
                 'XL' => 'Extra Large'
-            ])); ?>
+            ], null, ['class' => 'form-control'])); ?>
 
         </div>
 
@@ -39,14 +50,21 @@
                 'black' => 'Black',
                 'white' => 'White',
                 'grey' => 'Grey'
-            ])); ?>
+        ], null, ['class' => 'form-control'])); ?>
 
         </div>
 
         <div class="form-group">
             <?php echo e(Form::label('price', 'Price')); ?>
 
-            <?php echo e(Form::number('price', 0)); ?>
+            <?php echo e(Form::number('price', 0, ['class' => 'form-control'])); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo e(Form::label('price', 'Image')); ?>
+
+            <?php echo e(Form::file('image', ['class' => 'form-control'])); ?>
 
         </div>
 

@@ -16,7 +16,7 @@
             <?php echo e(Form::select('gender',[
                 'M' => 'Male',
                 'F' => 'Female'
-               ], $shirt->gender)); ?>
+               ], $shirt->gender, ['class' => 'form-control'])); ?>
 
         </div>
 
@@ -28,7 +28,7 @@
                 'M' => 'Medium',
                 'L' => 'Large',
                 'XL' => 'Extra Large'
-        ], $shirt->size)); ?>
+        ], $shirt->size, ['class' => 'form-control'])); ?>
 
         </div>
 
@@ -39,14 +39,14 @@
                 'black' => 'Black',
                 'white' => 'White',
                 'grey' => 'Grey'
-        ], $shirt->color)); ?>
+        ], $shirt->color, ['class' => 'form-control'])); ?>
 
         </div>
 
         <div class="form-group">
             <?php echo e(Form::label('price', 'Price')); ?>
 
-            <?php echo e(Form::number('price', $shirt->price)); ?>
+            <?php echo e(Form::number('price', $shirt->pricem, ['class' => 'form-control'])); ?>
 
         </div>
 

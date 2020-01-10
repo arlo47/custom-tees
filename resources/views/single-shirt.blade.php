@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-12 col-lg-6">
-            <img class="main-image d-block mx-auto img-fluid" src="{{ URL::to('/') }}/images/{{ $shirt->image }}">
+            <img class="main-image d-block mx-auto img-fluid" src="{{ URL::to('/') }}/images/shirts/{{ $shirt->image }}">
         </div>
         
         <div class="col-12 col-lg-6">

@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
     <div class="row">
         <div class="col-12 col-lg-6">
-            <img class="main-image d-block mx-auto img-fluid" src="<?php echo e(URL::to('/')); ?>/images/<?php echo e($shirt->image); ?>">
+            <img class="main-image d-block mx-auto img-fluid" src="<?php echo e(URL::to('/')); ?>/images/shirts/<?php echo e($shirt->image); ?>">
         </div>
         
         <div class="col-12 col-lg-6">

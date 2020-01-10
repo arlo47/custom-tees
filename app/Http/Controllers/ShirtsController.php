@@ -118,16 +118,34 @@ class ShirtsController extends Controller
      */
     public function store(Request $request)
     {
+
+        //validate form
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gender' => 'required',
+            'size' => 'required',
+            'color' => 'required',
+            'price' => 'required|numeric|min:1|max:99'
+        ]);
+        
+        //gives image same name as shirt name in lowercase
+        $imageName = strtolower($request->input('name')).'.'.request()->image->getClientOriginalExtension();
+
+        //save image to images directory
+        request()->image->move(public_path('images/shirts'), $imageName);
+
         $shirt = new Shirt;
         $shirt->name = $request->input('name');
         $shirt->gender = $request->input('gender');
         $shirt->size = $request->input('size');
         $shirt->color = $request->input('color');
         $shirt->price = $request->input('price');
-        $shirt->image = 'placeholder.jpg';
+        $shirt->image = $imageName;
         $shirt->save();
 
         return redirect('/admin')->with('success', 'Shirt created!');
+
     }
 
     /**
