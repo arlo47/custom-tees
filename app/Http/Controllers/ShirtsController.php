@@ -188,4 +188,9 @@ class ShirtsController extends Controller
         return redirect('/admin')->with('success', 'Post Deleted!');
     }
 
+    public function shirtById($id){
+        $shirt = Shirt::find($id);
+        return $shirt;
+    }
+
 }

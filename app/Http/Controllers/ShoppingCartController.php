@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ShoppingCart;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ShirtsController;
+use Auth;
 
 
 class ShoppingCartController extends Controller
@@ -27,6 +29,9 @@ class ShoppingCartController extends Controller
         if(!isset($shoppingCartQuery)){
             return $shoppingCartQuery;
         }
+        else{
+            return null;
+        }
 
     }
 
@@ -47,8 +52,15 @@ class ShoppingCartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $userId = Auth::id();
+        $shoppingCart = $this->loadShoppingCart($userId);
+        //$shoppingCart->where('product_id', $request->input('id'));
+
+        return $shoppingCart;
+        // $cartItem = new ShoppingCart;
+        // $cartItem->user_id = $userId;
+        // $cartItem->product_id = $request->input('id');
     }
 
     /**
@@ -57,9 +69,20 @@ class ShoppingCartController extends Controller
      * @param  \App\ShoppingCart  $shoppingCart
      * @return \Illuminate\Http\Response
      */
-    public function show(ShoppingCart $shoppingCart)
+    public function show(ShoppingCart $shoppingCart, $userId)
     {
-        //
+        $shoppingCartQuery = ShoppingCart::where('user_id', $userId)->get();
+        $shoppingCart = [];
+        foreach($shoppingCartQuery as $cartItem){
+            $shirt = app('App\Http\Controllers\ShirtsController')->shirtById($cartItem->product_id);
+            array_push($shoppingCart,$shirt);
+        }
+        return view('shoppingcart')->with('shoppingCart', $shoppingCart);
+    }
+
+
+    public function addItem(){
+
     }
 
     /**

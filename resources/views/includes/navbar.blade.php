@@ -20,6 +20,7 @@
       </ul>
       <ul class="navbar-nav user-info">   
       @guest
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -47,4 +48,6 @@
       </ul>
     </div>
   </nav>
-
+<li class="nav-item">
+                                <a class="nav-link" href="/cart/{{Auth::id()}}">Shopping Cart</a>
+                            </li>

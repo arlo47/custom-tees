@@ -22,9 +22,10 @@ class UsersController extends Controller
                                     ->with('user', $user);
             }
             else{
-                ShoppingCartController::loadShoppingCart($userId);
+                $shoppingCart = app('App\Http\Controllers\ShoppingCartController')->loadShoppingCart($userId);
                 return view('catalog')->with('user', $user)
-                                      ->with('shirts',$shirts);  
+                                      ->with('shirts',$shirts)
+                                      ->with('shoppingCart', $shoppingCart);  
             }
         }
         else{

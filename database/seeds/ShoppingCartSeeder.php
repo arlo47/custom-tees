@@ -11,6 +11,10 @@ class ShoppingCartSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('shopping_carts')->insert([
+            'user_id'=>2,
+            'product_id'=>10,
+            'quantity'=>1,
+        ]);
     }
 }

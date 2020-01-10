@@ -20,6 +20,7 @@
       </ul>
       <ul class="navbar-nav user-info">   
       <?php if(auth()->guard()->guest()): ?>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
                             </li>
@@ -48,5 +49,7 @@
       </ul>
     </div>
   </nav>
-
+<li class="nav-item">
+                                <a class="nav-link" href="/cart/<?php echo e(Auth::id()); ?>">Shopping Cart</a>
+                            </li>
 <?php /**PATH C:\Users\1332549\Documents\PHP(Part2)\repos\custom-tees\resources\views/includes/navbar.blade.php ENDPATH**/ ?>

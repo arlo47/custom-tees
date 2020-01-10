@@ -40,9 +40,6 @@ Route::put('/admin/edit/{id}', 'ShirtsController@update');
 
 Route::delete('/admin/delete/{id}', 'ShirtsController@destroy');
 
-
-
-
 Route::get('/about', function() {
     return view('about');
 });
@@ -51,7 +48,9 @@ Route::get('/contact', function() {
     return view('contact');
 });
 
-
+//Shopping Cart Routes
 //Add to Shopping cart Route
-Route::get('/add-to-cart/{id}', 'ShirtsController@addToCart');
+Route::get('/add-to-cart/{id}', 'ShoppingCartController@store');
 
+//Show Shopping Cart
+Route::get('/cart/{id}', 'ShoppingCartController@show');
