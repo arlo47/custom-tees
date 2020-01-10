@@ -3,16 +3,6 @@
 @section('content')
     <h1>Create New Shirt</h1>
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
     {!! Form::open(['action' => 'ShirtsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
         <div class="form-group">

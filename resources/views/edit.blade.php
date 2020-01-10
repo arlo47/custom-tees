@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>Edit Shirt</h1>
+
     {!! Form::open(['action' => ['ShirtsController@update', $shirt->id], 'method' => 'POST']) !!}
 
         <div class="form-group">
@@ -38,9 +39,9 @@
 
         <div class="form-group">
             {{ Form::label('price', 'Price') }}
-            {{ Form::number('price', $shirt->pricem, ['class' => 'form-control']) }}
+            {{ Form::number('price', $shirt->price, ['class' => 'form-control']) }}
         </div>
-
+        
         <!-- hidden element to spoof PUT request -->
         {{ Form::hidden('_method', 'PUT') }}
 

@@ -1,5 +1,6 @@
 <?php $__env->startSection('content'); ?>
     <h1>Edit Shirt</h1>
+
     <?php echo Form::open(['action' => ['ShirtsController@update', $shirt->id], 'method' => 'POST']); ?>
 
 
@@ -46,10 +47,10 @@
         <div class="form-group">
             <?php echo e(Form::label('price', 'Price')); ?>
 
-            <?php echo e(Form::number('price', $shirt->pricem, ['class' => 'form-control'])); ?>
+            <?php echo e(Form::number('price', $shirt->price, ['class' => 'form-control'])); ?>
 
         </div>
-
+        
         <!-- hidden element to spoof PUT request -->
         <?php echo e(Form::hidden('_method', 'PUT')); ?>
 

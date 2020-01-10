@@ -181,6 +181,16 @@ class ShirtsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        //validate form
+        $request->validate([
+            'name' => 'required',
+            'gender' => 'required',
+            'size' => 'required',
+            'color' => 'required',
+            'price' => 'required|numeric|min:1|max:99'
+        ]);
+
         $shirt = Shirt::find($id);
         $shirt->name = $request->input('name');
         $shirt->gender = $request->input('gender');
