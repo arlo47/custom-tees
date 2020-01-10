@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="breadcrumbs-section">
     <div class="container pl-3 p-sm-3">
       <div class="row">
@@ -88,4 +86,6 @@
             width="100%" height="300px" frameborder="0" style="border:0"></iframe>
       </div>
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\0722273\repositories\custom-tees\resources\views/contact.blade.php ENDPATH**/ ?>

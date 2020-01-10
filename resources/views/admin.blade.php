@@ -8,7 +8,7 @@
 
             <div class="d-flex justify-content-between align-items-end">
                 <a href="/admin/create" class="btn btn-primary my-3">Create New</a>
-                {{ $shirts->links() }}
+                {{ $shirts->appends(request()->input())->links() }}
             </div>
 
             

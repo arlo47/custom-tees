@@ -118,7 +118,6 @@ class ShirtsController extends Controller
      */
     public function store(Request $request)
     {
-
         $shirt = new Shirt;
         $shirt->name = $request->input('name');
         $shirt->gender = $request->input('gender');
@@ -173,6 +172,7 @@ class ShirtsController extends Controller
         $shirt->save();
 
         return redirect('/admin')->with('success', 'Shirt updated!');
+
     }
 
     /**

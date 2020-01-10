@@ -6,7 +6,7 @@
 
         <div class="form-group">
             {{ Form::label('name', 'Name') }}
-            {{ Form::text('Name', $shirt->name, ['class' => 'form-control']) }}
+            {{ Form::text('name', $shirt->name, ['class' => 'form-control']) }}
         </div>
 
         <div class="form-group">
@@ -38,7 +38,7 @@
 
         <div class="form-group">
             {{ Form::label('price', 'Price') }}
-            {{ Form::number('Price', $shirt->price) }}
+            {{ Form::number('price', $shirt->price) }}
         </div>
 
         <!-- hidden element to spoof PUT request -->

@@ -19,7 +19,7 @@
                         <h1 class="text-center text-lg-left"><a class="brand-name" href="#">Custom Tees</a></h1>
                     </div>
                     <div class="col-12 col-lg-7 w-lg-100 d-lg-flex align-items-lg-center">
-                        @include('includes.search')
+                        @include('includes.search')                      
                     </div>
                 </div>
             </div>
