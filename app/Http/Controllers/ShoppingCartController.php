@@ -70,7 +70,7 @@ class ShoppingCartController extends Controller
         }
         //$shoppingCart->where('product_id', $request->input('id'));
 
-        return view('about');
+        return redirect('/about')->with('success', 'Shirt Added to Cart!');;
         
     }
 
