@@ -51,16 +51,27 @@ class ShoppingCartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $shirtId)
     {   
         $userId = Auth::id();
-        $shoppingCart = $this->loadShoppingCart($userId);
+        $shoppingCart = ShoppingCart::where('user_id', $userId);
+        if(isset($shoppingCart)){
+            $cartItem = $shoppingCart->where('product_id', $shirtId)->first();
+            if(isset($cartItem)){
+                $cartItem->quantity++;
+            }
+            else{
+                $cartRow = new ShoppingCart;
+                $cartRow->user_id = $userId;
+                $cartRow->product_id = $shirtId;
+                $cartRow->quantity = 1;
+                $cartRow->save();
+            }
+        }
         //$shoppingCart->where('product_id', $request->input('id'));
 
-        return $shoppingCart;
-        // $cartItem = new ShoppingCart;
-        // $cartItem->user_id = $userId;
-        // $cartItem->product_id = $request->input('id');
+        return view('about');
+        
     }
 
     /**

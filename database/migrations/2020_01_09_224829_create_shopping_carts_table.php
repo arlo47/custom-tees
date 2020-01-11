@@ -23,6 +23,7 @@ class CreateShoppingCartsTable extends Migration
             $table->foreign('product_id')
                     ->references('id')->on('shirts');
             $table->integer('quantity');
+            $table->timestamps();
         });
     }
 
