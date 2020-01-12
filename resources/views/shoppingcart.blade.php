@@ -14,16 +14,16 @@
                         <th scope="col">Quantity</th>
                     </thead>
                     <tbody>
-                    @foreach($shoppingCart as $shirt)
+                    @foreach($shoppingCart as $shoppingCart)
                             <tr>
-                                <th><img src="{{ URL::to('/') }}/images/{{ $shirt->image }}" height="100"></th>
-                                <th>{{ $shirt->name }}</th>
-                                <th>{{ $shirt->gender }}</th>
-                                <th>{{ $shirt->color }}</th>
-                                <th>{{ $shirt->size }}</th>
-                                <th>${{ $shirt->price }}</th>
-                                <th>{{$shirt->quantity}}</th>
-                                <th><a href="/remove/{{$shirt->id}}">Remove</a>
+                                <th><img src="{{ URL::to('/') }}/images/shirts/{{ $shoppingCart->image }}" height="100"></th>
+                                <th>{{ $shoppingCart->name }}</th>
+                                <th>{{ $shoppingCart->gender }}</th>
+                                <th>{{ $shoppingCart->color }}</th>
+                                <th>{{ $shoppingCart->size }}</th>
+                                <th>${{ $shoppingCart->price }}</th>
+                                <th>{{$shoppingCart->quantity}}</th>
+                                <th><a href="/remove/{{$shoppingCart->id}}">Remove</a>
                             </tr>
                     @endforeach
                     <tr>
@@ -38,18 +38,4 @@
                     </tbody>
                 </table>
             </div>
-
-    <!-- <div class="col-12 col-md-6 col-lg-4">
-        <div class="card m-1 p-1">
-            <a class="d-block text-dark" href="/shirts/{{ $shirt->id }}">
-                <img class="thumbnail img-fluid card-img-top" src="{{ URL::to('/') }}/images/{{ $shirt->image }}" height="400">
-            </a>
-                                
-            <div class="card-body">
-                <h3 class="card-title h5 mt-2">{{ $shirt->name }}</h3>
-                    <p class="card-text h3">${{ $shirt->price }}</p>
-            </div>
-        </div>
-    </div> -->
-
 @endsection

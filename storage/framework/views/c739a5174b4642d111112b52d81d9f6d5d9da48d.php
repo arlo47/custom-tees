@@ -19,33 +19,34 @@
           </li>
         </ul>
         <ul class="navbar-nav user-info">  
-          @guest
+          <?php if(auth()->guard()->guest()): ?>
               <li class="nav-item">
-                  <a class="nav-link text-light d-flex align-items-center" href="{{ route('login') }}"><i class="material-icons mr-1">input</i> {{ __('Login') }}</a>
+                  <a class="nav-link text-light d-flex align-items-center" href="<?php echo e(route('login')); ?>"><i class="material-icons mr-1">input</i> <?php echo e(__('Login')); ?></a>
               </li>
-              @if (Route::has('register'))
+              <?php if(Route::has('register')): ?>
                   <li class="nav-item">
-                      <a class="nav-link text-light d-flex align-items-center" href="{{ route('register') }}"><i class="material-icons mr-1">assignment_ind</i> {{ __('Register') }}</a>
+                      <a class="nav-link text-light d-flex align-items-center" href="<?php echo e(route('register')); ?>"><i class="material-icons mr-1">assignment_ind</i> <?php echo e(__('Register')); ?></a>
                   </li>
-              @endif
-          @else
+              <?php endif; ?>
+          <?php else: ?>
             <li class="nav-item">
-              <span class="nav-link text-light d-flex align-items-center"><i class="material-icons">account_box</i> {{ Auth::user()->name }}</span> 
+              <span class="nav-link text-light d-flex align-items-center"><i class="material-icons">account_box</i> <?php echo e(Auth::user()->name); ?></span> 
             </li>
             <li class="nav-item">
               <a class="nav-link text-light d-flex align-items-center" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <i class="material-icons">exit_to_app</i> {{ __('Logout') }}
+                <i class="material-icons">exit_to_app</i> <?php echo e(__('Logout')); ?>
+
               </a>   
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
+              <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;"> <?php echo csrf_field(); ?> </form>
             </li>
             <li class="nav-item">
-              @if(Auth::user()->id == 1)
+              <?php if(Auth::user()->id == 1): ?>
                 <a class="nav-link text-light d-flex align-items-center" href="/admin"><i class="material-icons">settings_applications</i> admin panel</a>
-              @endif 
+              <?php endif; ?> 
             </li>
-            @endguest   
+            <?php endif; ?>   
             <li class="nav-item">
-              <a class="nav-link text-light d-flex align-items-center" href="/cart/{{Auth::id()}}"><i class="material-icons">shopping_cart</i> Shopping Cart</a>
+              <a class="nav-link text-light d-flex align-items-center" href="/cart/<?php echo e(Auth::id()); ?>"><i class="material-icons">shopping_cart</i> Shopping Cart</a>
           </li>   
         </ul>
       </div>
@@ -53,3 +54,4 @@
   </nav>
 
  
+<?php /**PATH C:\repositories\custom-tees\resources\views/includes/navbar.blade.php ENDPATH**/ ?>

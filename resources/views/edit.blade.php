@@ -32,8 +32,11 @@
             {{ Form::label('color', 'Color') }}
             {{ Form::select('color', [
                 'black' => 'Black',
+                'pink' => 'Pink',
                 'white' => 'White',
-                'grey' => 'Grey'
+                'grey' => 'Grey',
+                'orange' => 'Orange',
+                'red' => 'Red'
         ], $shirt->color, ['class' => 'form-control']) }}
         </div>
 

@@ -94,9 +94,44 @@ class ShirtsController extends Controller
             $shirtQuery->where('price', '<=', $maxPrice);
         }
 
-        //return $shirtQuery->get();
-
         return view('catalog')->with('shirts', $shirtQuery->paginate(9));
+    }
+
+    public function adminFilter(Request $request)
+    {
+
+        $shirtQuery = Shirt::query();
+
+        if($request->input('gender')) {
+            $shirtQuery->where('gender', $request->input('gender'));
+        }
+        if($request->input('size')) {
+            $shirtQuery->where('size', $request->input('size'));
+        }
+        if($request->input('color')) {
+            $shirtQuery->where('color', $request->input('color'));
+        }
+
+        //price filters
+        if($request->input('minPrice') && $request->input('maxPrice')) {
+            //parse to floats
+            $minPrice = floatval($request->input('minPrice'));
+            $maxPrice = floatval($request->input('maxPrice'));
+
+            $shirtQuery->whereBetween('price', [$minPrice, $maxPrice]);
+        }
+        else if($request->input('minPrice')) {
+            $minPrice = floatval($request->input('minPrice'));
+
+            $shirtQuery->where('price', '>=', $minPrice);
+        }
+        else if($request->input('maxPrice')) {
+            $maxPrice = floatval($request->input('maxPrice'));
+
+            $shirtQuery->where('price', '<=', $maxPrice);
+        }
+
+        return view('admin')->with('shirts', $shirtQuery->paginate(9));
         
     }
 
@@ -220,5 +255,4 @@ class ShirtsController extends Controller
         $shirt = Shirt::find($id);
         return $shirt;
     }
-
 }

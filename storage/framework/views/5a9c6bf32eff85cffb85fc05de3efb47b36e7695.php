@@ -42,3 +42,4 @@
     </div>
     <input class="btn btn-primary" type="submit" value="Filter">
 </form>
+<?php /**PATH C:\repositories\custom-tees\resources\views/includes/admin-filters.blade.php ENDPATH**/ ?>

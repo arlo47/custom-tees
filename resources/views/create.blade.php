@@ -32,9 +32,12 @@
             {{ Form::label('color', 'Color') }}
             {{ Form::select('color', [
                 'black' => 'Black',
+                'pink' => 'Pink',
                 'white' => 'White',
-                'grey' => 'Grey'
-        ], null, ['class' => 'form-control']) }}
+                'grey' => 'Grey',
+                'orange' => 'Orange',
+                'red' => 'Red'
+        ], '', ['class' => 'form-control']) }}
         </div>
 
         <div class="form-group">

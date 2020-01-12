@@ -19,7 +19,7 @@
                     </ul>
                     
                     <a href="/add-to-cart/{{$shirt->id}}" class="cart-btn m-3 btn btn-primary d-flex align-items-center justify-content-center">
-                        <i class="material-icons">shopping_cart</i>
+                        <i class="material-icons">add_shopping_cart</i>
                         Add to Cart
                     </a>
                 </div>

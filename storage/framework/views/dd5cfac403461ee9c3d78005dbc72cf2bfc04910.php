@@ -35,3 +35,4 @@
 
     <input class="btn btn-primary my-2" type="submit" value="Filter">
 </form>
+<?php /**PATH C:\repositories\custom-tees\resources\views/includes/filters.blade.php ENDPATH**/ ?>
