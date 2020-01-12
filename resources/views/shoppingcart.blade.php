@@ -2,9 +2,34 @@
 
 @section('content')
 
-@foreach($shoppingCart as $shirt)
+<div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <th></th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">quantity</th>
+                    </thead>
+                    <tbody>
+                    @foreach($shoppingCart as $shirt)
+                            <tr>
+                                <th><img src="{{ URL::to('/') }}/images/{{ $shirt->image }}" height="100"></th>
+                                <th>{{ $shirt->name }}</th>
+                                <th>{{ $shirt->gender }}</th>
+                                <th>{{ $shirt->color }}</th>
+                                <th>{{ $shirt->size }}</th>
+                                <th>${{ $shirt->price }}</th>
+                                <th>{{$shirt->quantity}}</th>
+                            </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
 
-    <div class="col-12 col-md-6 col-lg-4">
+    <!-- <div class="col-12 col-md-6 col-lg-4">
         <div class="card m-1 p-1">
             <a class="d-block text-dark" href="/shirts/{{ $shirt->id }}">
                 <img class="thumbnail img-fluid card-img-top" src="{{ URL::to('/') }}/images/{{ $shirt->image }}" height="400">
@@ -15,6 +40,6 @@
                     <p class="card-text h3">${{ $shirt->price }}</p>
             </div>
         </div>
-    </div>
-@endforeach
+    </div> -->
+
 @endsection
