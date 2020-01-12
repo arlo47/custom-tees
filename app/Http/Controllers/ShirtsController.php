@@ -23,6 +23,7 @@ class ShirtsController extends Controller
             $searchTerm = $request->input('search');
 
             $shirts = Shirt::where('name', 'like', "%$searchTerm%")->paginate(9);
+            
         }
         //else, display all shirts
         else {
