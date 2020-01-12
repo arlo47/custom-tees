@@ -46,8 +46,9 @@
             @endguest      
         </ul>
       </div>
-          
     </div>
   </nav>
-
+  <li class="nav-item">
+    <a class="nav-link" href="/cart/{{Auth::id()}}">Shopping Cart</a>
+</li>
  

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Shirt;
 use App\Http\Controllers\ShirtsController;
+use App\Http\Controllers\ShoppingCartController;
 
 class UsersController extends Controller
 {   
@@ -21,8 +22,10 @@ class UsersController extends Controller
                                     ->with('user', $user);
             }
             else{
+                $shoppingCart = app('App\Http\Controllers\ShoppingCartController')->loadShoppingCart($userId);
                 return view('catalog')->with('user', $user)
-                                      ->with('shirts',$shirts);  
+                                      ->with('shirts',$shirts)
+                                      ->with('shoppingCart', $shoppingCart);  
             }
         }
         else{

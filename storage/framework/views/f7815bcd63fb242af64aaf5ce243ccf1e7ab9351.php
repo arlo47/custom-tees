@@ -52,4 +52,4 @@
 <li class="nav-item">
                                 <a class="nav-link" href="/cart/<?php echo e(Auth::id()); ?>">Shopping Cart</a>
                             </li>
-<?php /**PATH C:\Users\1332549\Documents\PHP(Part2)\repos\custom-tees\resources\views/includes/navbar.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\repos\custom-tees\resources\views/includes/navbar.blade.php ENDPATH**/ ?>
