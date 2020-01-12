@@ -11,7 +11,7 @@
                         <th scope="col">Color</th>
                         <th scope="col">Size</th>
                         <th scope="col">Price</th>
-                        <th scope="col">quantity</th>
+                        <th scope="col">Quantity</th>
                     </thead>
                     <tbody>
                     @foreach($shoppingCart as $shirt)
@@ -23,8 +23,18 @@
                                 <th>{{ $shirt->size }}</th>
                                 <th>${{ $shirt->price }}</th>
                                 <th>{{$shirt->quantity}}</th>
+                                <th><a href="/remove/{{$shirt->id}}">Remove</a>
                             </tr>
                     @endforeach
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Total: ${{number_format($shoppingCartTotal, 2)}}</th>
+                        <th></th>
+                    </tr>
                     </tbody>
                 </table>
             </div>

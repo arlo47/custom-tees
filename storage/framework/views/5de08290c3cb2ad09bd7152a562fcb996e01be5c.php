@@ -9,7 +9,7 @@
                         <th scope="col">Color</th>
                         <th scope="col">Size</th>
                         <th scope="col">Price</th>
-                        <th scope="col">quantity</th>
+                        <th scope="col">Quantity</th>
                     </thead>
                     <tbody>
                     <?php $__currentLoopData = $shoppingCart; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $shirt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -21,8 +21,18 @@
                                 <th><?php echo e($shirt->size); ?></th>
                                 <th>$<?php echo e($shirt->price); ?></th>
                                 <th><?php echo e($shirt->quantity); ?></th>
+                                <th><a href="/remove/<?php echo e($shirt->id); ?>">Remove</a>
                             </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Total: $<?php echo e(number_format($shoppingCartTotal, 2)); ?></th>
+                        <th></th>
+                    </tr>
                     </tbody>
                 </table>
             </div>

@@ -54,3 +54,7 @@ Route::get('/add-to-cart/{id}', 'ShoppingCartController@store');
 
 //Show Shopping Cart
 Route::get('/cart/{id}', 'ShoppingCartController@show');
+
+//Remove item from shopping Cart
+
+Route::get('/remove/{id}','ShoppingCartController@removeItem');

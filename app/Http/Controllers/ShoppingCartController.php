@@ -58,7 +58,9 @@ class ShoppingCartController extends Controller
         if(isset($shoppingCart)){
             $cartItem = $shoppingCart->where('product_id', $shirtId)->first();
             if(isset($cartItem)){
+                //$quantity = $cartItem->quantity;
                 $cartItem->quantity++;
+                $cartItem->save();
             }
             else{
                 $cartRow = new ShoppingCart;
@@ -80,15 +82,26 @@ class ShoppingCartController extends Controller
      * @param  \App\ShoppingCart  $shoppingCart
      * @return \Illuminate\Http\Response
      */
-    public function show(ShoppingCart $shoppingCart, $userId)
+    public function show()
     {
-        $shoppingCartQuery = ShoppingCart::where('user_id', $userId)->get();
+        $shoppingCartQuery = ShoppingCart::where('user_id', Auth::id())->get();
         $shoppingCart = [];
+        $shoppingCartTotal = 0;
         foreach($shoppingCartQuery as $cartItem){
+            $shirtQuantity = $cartItem->quantity;
             $shirt = app('App\Http\Controllers\ShirtsController')->shirtById($cartItem->product_id);
+            $shirt->quantity = $shirtQuantity;
+            // $tempCart = [];
+            // array_push($tempCart, $shirt,$shirtQuantity);
             array_push($shoppingCart,$shirt);
         }
-        return view('shoppingcart')->with('shoppingCart', $shoppingCart);
+
+        foreach($shoppingCart as $shirt){
+            $shoppingCartTotal += ($shirt->price) * ($shirt->quantity); 
+        }
+        //dd($shoppingCart);
+        return view('shoppingcart')->with('shoppingCart', $shoppingCart)
+                                    ->with('shoppingCartTotal', $shoppingCartTotal);
     }
 
 
@@ -128,5 +141,13 @@ class ShoppingCartController extends Controller
     public function destroy(ShoppingCart $shoppingCart)
     {
         //
+    }
+
+    public function removeItem($shirtId){
+        $shoppingCartQuery = ShoppingCart::where('user_id', Auth::id())->get();
+        $shoppingCart = $shoppingCartQuery->where('product_id',$shirtId)->first();
+        $shoppingCart->delete();
+
+        return $this->show();
     }
 }
