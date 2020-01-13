@@ -24,5 +24,6 @@ class UsersTableSeeder extends Seeder
             'email'=>'testuser@gmail.com',
             'password'=>bcrypt(123),
         ]);
+
     }
 }

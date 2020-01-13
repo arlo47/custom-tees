@@ -54,20 +54,25 @@ class ShoppingCartController extends Controller
     public function store(Request $request, $shirtId)
     {   
         $userId = Auth::id();
-        $shoppingCart = ShoppingCart::where('user_id', $userId);
-        if(isset($shoppingCart)){
-            $cartItem = $shoppingCart->where('product_id', $shirtId)->first();
-            if(isset($cartItem)){
-                //$quantity = $cartItem->quantity;
-                $cartItem->quantity++;
-                $cartItem->save();
-            }
-            else{
-                $cartRow = new ShoppingCart;
-                $cartRow->user_id = $userId;
-                $cartRow->product_id = $shirtId;
-                $cartRow->quantity = 1;
-                $cartRow->save();
+        if(!isset($userId)){
+            return view('/auth/login')->with('error','Please login or register to add product');
+        }
+        else{
+            $shoppingCart = ShoppingCart::where('user_id', $userId);
+            if(isset($shoppingCart)){
+                $cartItem = $shoppingCart->where('product_id', $shirtId)->first();
+                if(isset($cartItem)){
+                    //$quantity = $cartItem->quantity;
+                    $cartItem->quantity++;
+                    $cartItem->save();
+                }
+                else{
+                    $cartRow = new ShoppingCart;
+                    $cartRow->user_id = $userId;
+                    $cartRow->product_id = $shirtId;
+                    $cartRow->quantity = 1;
+                    $cartRow->save();
+                }
             }
         }
         //$shoppingCart->where('product_id', $request->input('id'));
@@ -83,7 +88,12 @@ class ShoppingCartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show()
-    {
+    {   
+        $userId = Auth::id();
+        if(!isset($userId)){
+            return view('/auth/login')->with('error','Please login to view shopping cart');
+        }
+        else{
         $shoppingCartQuery = ShoppingCart::where('user_id', Auth::id())->get();
         $shoppingCart = [];
         $shoppingCartTotal = 0;
@@ -102,6 +112,7 @@ class ShoppingCartController extends Controller
         //dd($shoppingCart);
         return view('shoppingcart')->with('shoppingCart', $shoppingCart)
                                     ->with('shoppingCartTotal', $shoppingCartTotal);
+        }
     }
 
 
